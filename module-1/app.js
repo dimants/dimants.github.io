@@ -6,13 +6,16 @@ angular.module('LunchCheck', []).controller('LunchCheckController', LunchCheckCo
 LunchCheckController.$inject = ['$scope', '$filter'];
 
 function LunchCheckController($scope, $filter) {
-
+    $scope.menu = "";
     $scope.checkNumberOfItems = function(){
-        var count = $scope.menu.split(",").length;
-        if (count === 0){
+        if ($scope.menu == "")
+        {
             $scope.message = "Please enter data first";
+            return;
         }
-        else if (count < 4)
+
+        var count = $scope.menu.split(",").length;
+        if (count < 4)
         {
             $scope.message = "Enjoy!";
         }
